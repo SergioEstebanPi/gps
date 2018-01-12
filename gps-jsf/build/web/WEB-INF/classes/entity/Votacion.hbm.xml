@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-ene-2018 9:51:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="gps" name="entity.Votacion" optimistic-lock="version" table="votacion">
+    <id name="idVotacion" type="int">
+      <column name="ID_VOTACION"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="entity.Candidato" fetch="select" name="candidato">
+      <column name="ID_CANDIDATO" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="entity.Votante" fetch="select" name="votante">
+      <column name="ID_VOTANTE" not-null="true"/>
+    </many-to-one>
+    <property name="fechaVotacion" type="timestamp">
+      <column length="19" name="FECHA_VOTACION" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

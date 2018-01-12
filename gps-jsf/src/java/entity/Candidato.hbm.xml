@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-ene-2018 9:51:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="gps" name="entity.Candidato" optimistic-lock="version" table="candidato">
+    <id name="idCandidato" type="int">
+      <column name="ID_CANDIDATO"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nombreCandidato" type="string">
+      <column length="200" name="NOMBRE_CANDIDATO" not-null="true"/>
+    </property>
+    <property name="apellidoCandidato" type="string">
+      <column length="200" name="APELLIDO_CANDIDATO" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="votacions" table="votacion">
+      <key>
+        <column name="ID_CANDIDATO" not-null="true"/>
+      </key>
+      <one-to-many class="entity.Votacion"/>
+    </set>
+  </class>
+</hibernate-mapping>
